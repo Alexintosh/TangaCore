@@ -1,0 +1,3 @@
+<?php 
+//Where everything begin...
+?>
