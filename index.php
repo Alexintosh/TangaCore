@@ -2,9 +2,9 @@
 
 function error($txt, $die = false, $dbg = 0)
 {
-	if( !is_array($params)) return false;
-	return json_encode($params);
-
+	//Collecting errors
+	// ...
+	//Write a log 
 }
 
 function load($file) {
@@ -23,7 +23,6 @@ function autoload() {
 		404();
 	else
 		load($config['default_activity']) or error("load", true);
-	error(array("msg" ))
 }
 
 function main() {
@@ -32,5 +31,4 @@ function main() {
 }
 
 main();
-
 ?>
