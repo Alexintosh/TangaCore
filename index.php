@@ -1,49 +1,34 @@
-<?php 
+<?php define('__EXEC' 1);
 
-function error($params)
+function error($txt, $die = false, $dbg = 0)
 {
 	if( !is_array($params)) return false;
+	return json_encode($params);
 
 }
 
-function check_file($file = null)
-{
-	if(!$file) return false;
-
-}
-
-function load($file = null)
-{
-	if(!$file) return false;
-	if( !check_file($file) )
+function load($file) {
+	if(!file_exists(PLUGINS.$file))
 		return false;
-	else {
-		require_once(PLUGINS . $file);
-		return true;
-	}
+	require_once(PLUGINS . $file);
+	return true;
 }
 
-function autoload()
-{
-	if( isset($config['plugins_autoload']) )
-	{
-		foreach ($config['plugins_autoload'] as $plugin) {
-			load($plugin);
-		}
+function autoload() {
+	foreach(@$config['plugins_autoload']) as $p) {
+		load($p);
 	}
 
-	//$fn  = 'plugins/$action/index.php';
+	if(isset($_GET['tanga']) && !load($_GET['tanga'])
+		404();
+	else
+		load($config['default_activity']) or error("load", true);
+	error(array("msg" ))
 }
 
-function setup()
-{
-	autoload();
-}
-
-function main()
-{
-	require_once('config.inc.php');
-	setup();
+function main() {
+	require('config.inc.php');
+	autoload();	
 }
 
 main();

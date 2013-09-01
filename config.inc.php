@@ -1,15 +1,11 @@
-ST', '');
-define('DBUSER', '');
-define('DBPASS', '');
-define('DBNAME', '');
+<?php defined('__EXEC') or die;
 
-define('PATH', getcwd() );
-define('PLUGINS', PATH . '/plugins');
+define('PATH', getcwd().'/');
+define('PLUGINS', PATH.'plugins/');
 
-$config = [];
-
-//Plugins to autoload
-$config["plugins_autoload"] = ['security'];
-$config["default_activity"] = "";
+$config = array(
+	'plugins_autoload' => ['security'],
+	'default_activity' => 'home',
+);
 
 ?>
