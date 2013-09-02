@@ -7,11 +7,19 @@ function error($txt, $die = false, $dbg = 0)
 	//Write a log 
 }
 
-function load($file) {
+function load($file)
+{
 	if(!file_exists(PLUGINS.$file))
 		return false;
 	require_once(PLUGINS . $file);
 	return true;
+}
+
+function dieWithRsc404()
+{
+	header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
+	header("Status: 404 Not Found"); /* CGI */
+	die();
 }
 
 function autoload() {
@@ -20,7 +28,7 @@ function autoload() {
 	}
 
 	if(isset($_GET['tanga']) && !load($_GET['tanga'])
-		404();
+		dieWithRsc404();
 	else
 		load($config['default_activity']) or error("load", true);
 }
