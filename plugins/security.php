@@ -15,10 +15,10 @@ class Security{
 	static function _sanitize(&$data) {
 		foreach(@$data as $k => $v) {
 			if(is_array($v)) {
-				_sanitize($v);
+				 Security::_sanitize($v);
 				continue;
 			}
-			$data[$k] = sanitize($v);
+			$data[$k] = Security::sanitize($v);
 		}
 	}
 
