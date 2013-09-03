@@ -4,7 +4,7 @@ define('PATH', getcwd().'/');
 define('PLUGINS', PATH.'plugins/');
 
 $config = array(
-	'plugins_autoload' => ['security'],
+	'plugins_autoload' => ['security', 'db'],
 	'default_activity' => 'home',
 );
 
