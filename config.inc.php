@@ -4,13 +4,8 @@ define('PATH', getcwd().'/');
 define('PLUGINS', PATH.'plugins/');
 
 config(array(
-	'plugins_autoload' => array('security.php', 'DB.php'),
+	'plugins_autoload' => array('security.php'),
 	'default_activity' => 'test/index.php',
-
-	'plugconf' => array(
-		'plugin' => array(),
-		'plugin2' => array(),
-	),
 ));
 
 

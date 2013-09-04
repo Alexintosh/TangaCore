@@ -40,14 +40,15 @@ function dieWithRsc404()
 
 function autoload() {
 	global $config;
-	foreach(config('plugins_autoload') as $p) {
+
+	foreach((array)config('plugins_autoload') as $p) {
 		load($p);
 	}
 
 	if(isset($_GET['tanga']) && !load($_GET['tanga']))
 		dieWithRsc404();
 	else
-		load($config['default_activity']) or die('load');
+		load(config('default_activity')) or die('load');
 }
 
 function main() {
