@@ -1,13 +1,5 @@
 <?php define('__EXEC', 1);
 
-function error($txt, $die = false, $dbg = 0)
-{
-	echo $txt; 
-	//Collecting errors
-	// ...
-	//Write a log 
-}
-
 function load($file)
 {
 	if(!file_exists(PLUGINS.$file))
@@ -44,6 +36,6 @@ function main() {
 	require('config.inc.php');
 	autoload();
 }
+
 main();
-//phpinfo();
 ?>
