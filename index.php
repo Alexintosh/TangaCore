@@ -40,7 +40,7 @@ function dieWithRsc404()
 
 function autoload() {
 	global $config;
-	foreach(@$config['plugins_autoload'] as $p) {		
+	foreach(config('plugins_autoload') as $p) {
 		load($p);
 	}
 
