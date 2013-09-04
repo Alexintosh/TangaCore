@@ -12,6 +12,25 @@ function load($file)
 	return true;
 }
 
+function config($k, $v = null)
+{
+	global $_CONFIG;
+
+	if(is_array($k)) {
+		if($v !== null)
+			return false;
+		foreach($k as $_k => $_v) {
+			$_CONFIG[$_k] = $_v;
+		}
+		return true;
+	}
+
+	$r = @$_CONFIG[$k];
+	if($v !== null)
+		$_CONFIG[$k] = $v;
+	return $r;
+}
+
 function dieWithRsc404()
 {
 	header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
