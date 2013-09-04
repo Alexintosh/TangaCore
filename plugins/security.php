@@ -2,20 +2,16 @@
 //Security
 class Security{
 
-	static function sanitize($dirty)
+	static function _sanitize($s)
 	{
-		if (get_magic_quotes_gpc()) {
-			$clean = mysql_real_escape_string(stripslashes($dirty));
-		}else{
-			$clean = mysql_real_escape_string($dirty);
-		}
-		return $clean;
+		return addslashes(htmlentities($s, ENT_QUOTES, 'UTF-8'));
 	}
 
-	static function _sanitize(&$data) {
+	static function sanitize(&$data)
+	{
 		foreach(@$data as $k => $v) {
 			if(is_array($v)) {
-				 Security::_sanitize($v);
+				Security::_sanitize($v);
 				continue;
 			}
 			$data[$k] = Security::sanitize($v);
@@ -23,9 +19,9 @@ class Security{
 	}
 
 	static function main() {
-		Security::_sanitize($_POST);
-		Security::_sanitize($_GET);
-		Security::_sanitize($_REQUEST);
+		Security::sanitize($_POST);
+		Security::sanitize($_GET);
+		Security::sanitize($_REQUEST);
 	}
 }
 
