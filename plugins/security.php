@@ -1,4 +1,4 @@
-<?php
+<?php defined('__EXEC') or die;
 //Security
 class Security{
 

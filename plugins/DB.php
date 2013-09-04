@@ -1,4 +1,4 @@
-<?php
+<?php defined('__EXEC') or die;
 /**
  * TangaCore DB plugin
  * Provides a database wrapper around the PDO service to help reduce the effort
