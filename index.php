@@ -7,7 +7,7 @@ function load($file)
 	try {
 		@require_once(PLUGINS . $file);
 	}catch (Exception $e) {
-	    error('Caught exception: '. $e->getMessage());
+	    die('Caught exception: '. $e->getMessage());
 	}
 	return true;
 }
@@ -28,7 +28,7 @@ function autoload() {
 	if(isset($_GET['tanga']) && !load($_GET['tanga']))
 		dieWithRsc404();
 	else
-		load($config['default_activity']) or error("load", true);
+		load($config['default_activity']) or die('load');
 }
 
 function main() {
