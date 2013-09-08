@@ -2,6 +2,8 @@
 
 function load($name)
 {
+	if(!($name = trim($name)))
+		return false;
 	$fn = PLUGINS.$name.'/index.php'; /* XXX sanitize $name */
 	if(!file_exists($fn))
 		return false;
