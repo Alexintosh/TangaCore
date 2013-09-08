@@ -1,5 +1,5 @@
 <?php defined('__EXEC') or die;
-/* Base plugin: where magic happen. */
+/* tanga default template */
 
 function unused() {
 	load('DB');
@@ -20,5 +20,30 @@ function unused() {
 	DB::$c = $pdo;
 }
 
-echo "cca siemu";
 ?>
+<!doctype html>
+<html lang="it" dir="ltr">
+	<head>
+		<meta charset="UTF-8"> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+
+		<title>Title</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=9, IE=8, chrome=1">
+
+		<meta name="robots" content="index,follow" /> 
+		<meta name="revisit-after" content="7 days" /> 
+		<meta name="publisher" content="Vim" />
+
+		<meta name="author" content="Someone" />
+
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="copyright" content="" /> 
+		<meta http-equiv="content-language" content="IT" />
+	</head>
+
+	<body>
+		Body.
+	</body>
+</html>
