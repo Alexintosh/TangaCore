@@ -1,12 +1,13 @@
 <?php define('__EXEC', 1);
 
-function load($file)
+function load($name)
 {
-	if(!file_exists(PLUGINS.$file))
+	$fn = PLUGINS.$name.'/index.php'; /* XXX sanitize $name */
+	if(!file_exists($fn))
 		return false;
 	try {
-		@require_once(PLUGINS . $file);
-	}catch (Exception $e) {
+		require_once($fn);
+	} catch (Exception $e) {
 	    die('Caught exception: '. $e->getMessage());
 	}
 	return true;
@@ -38,23 +39,11 @@ function dieWithRsc404()
 	die();
 }
 
-function autoload() {
-	global $config;
-
-	foreach((array)config('plugins_autoload') as $p) {
-		load($p);
-	}
-
-	if(isset($_GET['tanga']) && !load($_GET['tanga']))
-		dieWithRsc404();
-	else
-		load(config('default_activity')) or die('load');
-}
-
-function main() {
-	global $config;
+function main()
+{
 	require('config.inc.php');
-	autoload();
+	if(!(load((string)@$_GET['tanga']) || load(config('default_tanga'))))
+		dieWithRsc404();
 }
 
 main();
